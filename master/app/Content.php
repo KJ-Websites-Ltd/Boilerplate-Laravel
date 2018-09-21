@@ -15,7 +15,7 @@ class Content extends Model
     {
         return $this->belongsToMany('App\Item');
     }
-    
+
     /**
      * Get the phone record associated with the user.
      */
