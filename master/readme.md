@@ -133,3 +133,6 @@ ignore Esensi Model Traits use laravel instead https://laravel.com/docs/5.6/vali
 
 https://laravel.com/docs/5.6/validation#creating-form-requests do tutorial
 
+#Front end
+
+https://laravel.com/docs/5.6/frontend
