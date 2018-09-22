@@ -15,7 +15,7 @@ Route::get('/', function () {
 
     $items = \App\Item::all();
 
-    
+
     foreach($items as $item) {
 
         echo $item->title;

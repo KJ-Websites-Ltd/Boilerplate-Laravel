@@ -122,3 +122,14 @@ build tables
 
 put link into item and content models
 
+
+#Making forms
+
+install and activate https://laravelcollective.com/docs/master/html
+
+then follow tutorial on https://selftaughtcoders.com/from-idea-to-launch/lesson-23/laravel-5-application-form-model-binding-laravelcollective-forms-html-library-bootstrap-framework/
+
+ignore Esensi Model Traits use laravel instead https://laravel.com/docs/5.6/validation#creating-form-requests
+
+https://laravel.com/docs/5.6/validation#creating-form-requests do tutorial
+

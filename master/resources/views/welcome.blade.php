@@ -82,6 +82,10 @@
                 </div>
 
                 <div class="links">
+
+                
+
+
                 @foreach ($items as $item)
                     <a>{{ $item->title }}</a>
                     
