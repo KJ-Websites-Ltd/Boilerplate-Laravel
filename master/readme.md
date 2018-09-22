@@ -136,3 +136,4 @@ https://laravel.com/docs/5.6/validation#creating-form-requests do tutorial
 #Front end
 
 https://laravel.com/docs/5.6/frontend
+https://laravel-mix.com/docs/2.1/installation
