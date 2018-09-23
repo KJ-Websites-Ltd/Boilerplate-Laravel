@@ -11,6 +11,7 @@
 |
 */
 
+/*
 Route::get('/', function () {
 
     $items = \App\Item::all();
@@ -36,7 +37,10 @@ Route::get('/', function () {
 
     return view('welcome', ['items' => $items]);
 });
+*/
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/books/', 'BookController@index')->name('books');
+Route::get('/book/{slug}', 'BookController@single')->name('books');

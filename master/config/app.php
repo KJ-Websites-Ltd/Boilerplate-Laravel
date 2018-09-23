@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'mrMen'),
 
     /*
     |--------------------------------------------------------------------------
@@ -163,6 +163,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //app
+        App\Providers\BookServiceProvider::class,
+
     ],
 
     /*
@@ -215,6 +218,8 @@ return [
         //form
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        
 
     ],
 

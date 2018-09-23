@@ -137,3 +137,9 @@ https://laravel.com/docs/5.6/validation#creating-form-requests do tutorial
 
 https://laravel.com/docs/5.6/frontend
 https://laravel-mix.com/docs/2.1/installation
+
+#Services
+
+make book service
+
+>php artisan make:provider BookServiceProvider
