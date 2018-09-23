@@ -41,6 +41,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'PageController@index')->name('home');
+Route::get('/{slug}.html', 'PageController@single')->name('home');
 Route::get('/books/', 'BookController@index')->name('books');
 Route::get('/book/{slug}', 'BookController@single')->name('books');

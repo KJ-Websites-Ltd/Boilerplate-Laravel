@@ -165,6 +165,7 @@ return [
 
         //app
         App\Providers\BookServiceProvider::class,
+        App\Providers\PageServiceProvider::class,
 
     ],
 
