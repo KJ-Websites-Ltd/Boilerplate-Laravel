@@ -1,0 +1,51 @@
+
+
+.card {
+
+    border: none;
+
+    .card-header {
+
+        background-color: $body-bg;
+        border-bottom: none;
+
+        h1 {
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+    }
+
+
+    &.book {
+
+        .card-body {
+
+            
+            display: grid;
+
+            @include media-breakpoint-up(md) {
+                grid-template-columns: 40% 60%;
+                grid-gap: 1rem;
+            }
+
+            .btn {
+                margin-top: 2rem;
+            }
+
+            .cover {    
+                width: 100%;
+
+            }
+
+            .form {
+                
+            }
+    
+        }
+
+    }
+
+    
+
+}

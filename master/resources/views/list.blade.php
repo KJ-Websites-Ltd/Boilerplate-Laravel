@@ -9,8 +9,8 @@
                     <h1>Documents</h1>
                 </div>
 
-                <div class="card-body book-list">
-                    <nav class="list-group">
+                <div class="card-body">
+                    <nav class="list-group nav books">
                     @foreach ($data as $book)
                         <a href="/book/{{ $book->slug }}.html" class="list-group-item list-group-item-action" data-viewed="{{ $book->viewed }}">
                             <strong>{{ $book->title }}</strong>
