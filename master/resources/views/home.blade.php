@@ -13,19 +13,17 @@
                 <div class="card-body">
 
                 
-
-
-                   @if (session('book.bought'))
+                   @if ($data->book_bought)
                     <h2>Books bought</h2>
                     <nav class="list-group">
                     @foreach ($data->book_bought as $book)
-                        <a href="/book/{{ $book->slug }}.html" class="list-group-item list-group-item-action" data-viewed="{{ $book->viewed }}">
+                        <a href="/book/{{ $book->slug }}.html" class="list-group-item list-group-item-action">
                             <strong>{{ $book->title }}</strong>
                         </a>
                     @endforeach
                     </nav>
                     @endif
-
+      
                     <a href="/list/" class="btn btn-primary">View The Document List</a>
 
                     

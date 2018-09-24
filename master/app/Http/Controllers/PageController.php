@@ -19,13 +19,6 @@ class PageController extends Controller
     public function __construct(PageService $pageService, BookService $bookService)
     {
         
-        //if some books have been bought the force a login or register
-        $booksBought = session('book.bought');
-        if (!empty($booksBought)) {
-            $this->middleware('auth');
-        }
-
-        
         $this->pageService = $pageService;
         $this->bookService = $bookService;
     }
@@ -37,11 +30,19 @@ class PageController extends Controller
      */
     public function index()
     {
-        
+
         $data = $this->pageService->getOne('home');       
         $data['book_bought'] = $this->bookService->get_multiple_by_slug(session('book.bought'));
-         
-        return view('home', ['data' => $data]);
+        $res = false;
+
+        //if user isnt logged in redirect them to login if any books are in basket        
+        if (\Auth::user() === null && !empty($data['book_bought'])) {
+            $res = redirect('login');
+        } else {
+            $res = view('home', ['data' => $data]);
+        }
+        
+        return $res;
     }
 
 
@@ -58,7 +59,7 @@ class PageController extends Controller
             $data = $this->pageService->getOne('404');
         }
 
-        $data['books.viewed'] = session('book.viewed');
+        $data['book.viewed'] = session('book.viewed');
       
 
         return view('page', ['data' => $data]);
