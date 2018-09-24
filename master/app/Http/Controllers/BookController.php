@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\BookService;
+use Illuminate\Foundation\Console\Presets\React;
 
 
 class BookController extends Controller
@@ -21,28 +22,54 @@ class BookController extends Controller
     public function __construct(BookService $bookService)
     {
         $this->bookService = $bookService;
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function index(BookService $bookService) {
 
-        $allBooks = $this->bookService->getAllByType();
-        print_r($allBooks);
+        $data = $this->bookService->getAllByType();
+        $bookViewed = session('book.viewed');
 
-        //return view with books
-        return null;
+        //check if a book has been viewed
+        //@todo move this to service provider
+        foreach ($data AS $id => $book) {
+            $data[$id]['viewed'] = 'false'; 
+           if (!empty($bookViewed) && in_array($book->slug, $bookViewed)) {
+               $data[$id]['viewed'] = 'true';
+           };
+
+        }
+
+
+        return view('list', ['data' => $data]);
 
     }
 
 
-    public function single($slug) {
+    public function single($slug, Request $request) {
 
-        $oneBook = $this->bookService->getOne($slug);
-        print_r($oneBook);
 
-       
-        //return view with single book
-        return null;
+        $res = false;
+        $data = $this->bookService->getOne($slug);
+
+
+        if ($request->isMethod('post')) {
+
+            //add this book to the bought session and then redirect to homepage
+            $request->session()->push('book.bought', $slug);
+            $res = redirect('/');
+
+        } else {
+
+            //add this book to the book viewed session array, display the book details
+            $request->session()->push('book.viewed', $slug);
+            $res= view('book', ['data' => $data]);
+
+        }
+
+
+        return $res;
+        
 
     }
 

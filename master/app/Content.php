@@ -9,7 +9,7 @@ class Content extends Model
 
 
      /**
-     * The roles that belong to the user.
+     * The items that this content belongs to.
      */
     public function items()
     {
@@ -17,7 +17,7 @@ class Content extends Model
     }
 
     /**
-     * Get the phone record associated with the user.
+     * Get the type record associated with the item.
      */
     public function type()
     {

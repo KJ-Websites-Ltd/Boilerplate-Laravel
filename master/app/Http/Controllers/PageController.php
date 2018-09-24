@@ -18,7 +18,7 @@ class PageController extends Controller
      */
     public function __construct(PageService $pageService)
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->pageService = $pageService;
     }
 
@@ -27,20 +27,26 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         
-        $homePage = $this->pageService->getOne('home');
-        print_r($homePage);
-        
-        return view('home');
+        $data = $this->pageService->getOne('home');       
+        $data['books.viewed'] = $request->session()->get('book.viewed');
+
+         
+        return view('home', ['data' => $data]);
     }
 
-    public function single($slug) {
+    public function single($slug, Request $request) {
 
-        $onePage = $this->pageService->getOne($slug);
-        print_r($onePage);
+        $data = $this->pageService->getOne($slug)->first();
+        if (empty($data)) {
+            $data = $this->pageService->getOne('404');
+        }
 
-        return null;
+        $data['books.viewed'] = $request->session()->get('book.viewed');
+      
+
+        return view('page', ['data' => $data]);
     }
 }

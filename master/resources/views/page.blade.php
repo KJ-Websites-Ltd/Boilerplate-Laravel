@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h1>Home Page</h1>
-	                <p>A Great Mr Men Documents Website</p>
+                    <h1>{{ $data->title }}</h1>
+	                <p>{{ $data->summary }}</p>
                 </div>
 
                 <div class="card-body">
@@ -15,11 +15,14 @@
                 <a href="/list/" class="btn btn-primary">View The Document List</a>
 
 
-                   @if (session('book.bought'))
-                       yep
+                   {{-- @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
                     @endif
 
-                    
+                    You are logged in!
+                    --}}
                 </div>
             </div>
         </div>

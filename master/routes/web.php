@@ -11,37 +11,11 @@
 |
 */
 
-/*
-Route::get('/', function () {
 
-    $items = \App\Item::all();
-
-
-    foreach($items as $item) {
-
-        echo $item->title;
-        echo '<br>';
-        foreach($item->types as $type) {
-            echo 'type=>' . $type->data . '<br>';
-        }
-        foreach($item->tags as $tag) {
-            echo 'tag=>' . $tag->data . '<br>';
-        }
-        foreach($item->contents as $content) {
-            echo 'content=>' . $content->data . '<br>';
-            echo 'content_type=>'.$content->type->data.'<br>';
-        }
-
-    }
-
-
-    return view('welcome', ['items' => $items]);
-});
-*/
 
 Auth::routes();
 
 Route::get('/', 'PageController@index')->name('home');
-Route::get('/{slug}.html', 'PageController@single')->name('home');
-Route::get('/books/', 'BookController@index')->name('books');
-Route::get('/book/{slug}', 'BookController@single')->name('books');
+Route::get('/{slug}.html', 'PageController@single');
+Route::get('/list/', 'BookController@index')->name('books');
+Route::match(['get', 'post'], '/book/{slug}.html', 'BookController@single');
