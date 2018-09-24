@@ -24,11 +24,11 @@
                         </a>
                     @endforeach
                     </nav>
-
+                    @endif
 
                     <a href="/list/" class="btn btn-primary">View The Document List</a>
 
-                    @endif
+                    
 
                     
                 </div>
