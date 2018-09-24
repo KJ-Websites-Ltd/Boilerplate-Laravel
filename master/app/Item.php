@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     /**
-     * The roles that belong to the user.
+     * The types that this item has.
      */
     public function types()
     {
@@ -15,7 +15,7 @@ class Item extends Model
     }
 
     /**
-     * The roles that belong to the user.
+     * The tags that belong to the item.
      */
     public function tags()
     {
@@ -23,7 +23,7 @@ class Item extends Model
     }
 
      /**
-     * The roles that belong to the user.
+     * The contents that belong to the item.
      */
     public function contents()
     {

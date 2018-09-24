@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
      /**
-     * The roles that belong to the user.
+     * The items that belong to the type.
      */
     public function items()
     {

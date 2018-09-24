@@ -14,7 +14,6 @@
 
 
 Auth::routes();
-
 Route::get('/', 'PageController@index')->name('home');
 Route::get('/{slug}.html', 'PageController@single');
 Route::get('/list/', 'BookController@index')->name('books');

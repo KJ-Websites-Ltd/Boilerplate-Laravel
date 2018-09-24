@@ -22,9 +22,14 @@ class BookController extends Controller
     public function __construct(BookService $bookService)
     {
         $this->bookService = $bookService;
-        //$this->middleware('auth');
     }
 
+    /**
+     * List all current books
+     *
+     * @param BookService $bookService
+     * @return void
+     */
     public function index(BookService $bookService) {
 
         $data = $this->bookService->getAllByType();
@@ -34,6 +39,9 @@ class BookController extends Controller
     }
 
 
+    /**
+     * Display a single book with details
+     */
     public function single($slug, Request $request) {
 
 

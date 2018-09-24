@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
       /**
-     * The roles that belong to the user.
+     * The items that belong to the tag.
      */
     public function items()
     {

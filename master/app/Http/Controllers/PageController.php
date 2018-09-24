@@ -31,7 +31,7 @@ class PageController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the homepage.
      *
      * @return \Illuminate\Http\Response
      */
@@ -45,7 +45,12 @@ class PageController extends Controller
     }
 
 
-
+    /**
+     * show each single page
+     *
+     * @param [type] $slug
+     * @return void
+     */
     public function single($slug) {
 
         $data = $this->pageService->getOne($slug)->first();
