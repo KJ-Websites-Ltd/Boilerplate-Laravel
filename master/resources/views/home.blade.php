@@ -12,11 +12,22 @@
 
                 <div class="card-body">
 
-                <a href="/list/" class="btn btn-primary">View The Document List</a>
+                
 
 
                    @if (session('book.bought'))
-                       yep
+                    <h2>Books bought</h2>
+                    <nav class="list-group">
+                    @foreach ($data->book_bought as $book)
+                        <a href="/book/{{ $book->slug }}.html" class="list-group-item list-group-item-action" data-viewed="{{ $book->viewed }}">
+                            <strong>{{ $book->title }}</strong>
+                        </a>
+                    @endforeach
+                    </nav>
+
+
+                    <a href="/list/" class="btn btn-primary">View The Document List</a>
+
                     @endif
 
                     

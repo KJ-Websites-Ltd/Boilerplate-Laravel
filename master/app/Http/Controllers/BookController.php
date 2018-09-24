@@ -28,19 +28,7 @@ class BookController extends Controller
     public function index(BookService $bookService) {
 
         $data = $this->bookService->getAllByType();
-        $bookViewed = session('book.viewed');
-
-        //check if a book has been viewed
-        //@todo move this to service provider
-        foreach ($data AS $id => $book) {
-            $data[$id]['viewed'] = 'false'; 
-           if (!empty($bookViewed) && in_array($book->slug, $bookViewed)) {
-               $data[$id]['viewed'] = 'true';
-           };
-
-        }
-
-
+    
         return view('list', ['data' => $data]);
 
     }

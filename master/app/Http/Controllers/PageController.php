@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\PageService;
+use App\Services\BookService;
 
 class PageController extends Controller
 {
 
-
+    private $pageService;
     private $bookService;
 
     /**
@@ -16,10 +16,18 @@ class PageController extends Controller
      *
      * @return void
      */
-    public function __construct(PageService $pageService)
+    public function __construct(PageService $pageService, BookService $bookService)
     {
-        //$this->middleware('auth');
+        
+        //if some books have been bought the force a login or register
+        $booksBought = session('book.bought');
+        if (!empty($booksBought)) {
+            $this->middleware('auth');
+        }
+
+        
         $this->pageService = $pageService;
+        $this->bookService = $bookService;
     }
 
     /**
@@ -27,24 +35,25 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         
         $data = $this->pageService->getOne('home');       
-        $data['books.viewed'] = $request->session()->get('book.viewed');
-
+        $data['book_bought'] = $this->bookService->get_multiple_by_slug(session('book.bought'));
          
         return view('home', ['data' => $data]);
     }
 
-    public function single($slug, Request $request) {
+
+
+    public function single($slug) {
 
         $data = $this->pageService->getOne($slug)->first();
         if (empty($data)) {
             $data = $this->pageService->getOne('404');
         }
 
-        $data['books.viewed'] = $request->session()->get('book.viewed');
+        $data['books.viewed'] = session('book.viewed');
       
 
         return view('page', ['data' => $data]);
