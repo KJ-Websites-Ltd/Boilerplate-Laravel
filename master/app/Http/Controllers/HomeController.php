@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Library\Services\ItemService;
+use App\Library\Services\PageService;
 
 
 class HomeController extends Controller
@@ -23,10 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ItemService $itemService)
+    public function index(PageService $pageService)
     {
 
-        echo $itemService->doSomethingUseful();
+        echo $pageService->doSomethingUseful();
 
         return view('home');
     }

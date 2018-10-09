@@ -5,8 +5,16 @@ use App\Library\Interfaces\Item\ItemInterface;
 
 class PageService implements ItemInterface
 {
-    public function doSomethingUseful()
+    
+
+  private $test;
+  
+  public function __construct($test='bbb') {
+    $this->test = $test;
+  }
+  
+  public function doSomethingUseful()
     {
-      return 'Output from PageService';
+      return $this->test;
     }
 }

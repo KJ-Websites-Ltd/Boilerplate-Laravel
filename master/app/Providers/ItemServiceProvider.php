@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Library\Services\ItemService;
+use App\Library\Services\PageService;
 
 class ItemServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,7 @@ class ItemServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        echo 'ive booted';
+       
     }
 
     /**
@@ -25,9 +26,14 @@ class ItemServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Library\Services\ItemService',
-            function($app) {
-                return new ItemService('tester');
+            'App\Library\Services\ItemService', function($app) {
+                return new ItemService('itemsss');
+            }
+        );
+
+        $this->app->bind(
+            'App\Library\Services\PageService', function($app) {
+                return new PageService('pagessss');
             }
         );
     }

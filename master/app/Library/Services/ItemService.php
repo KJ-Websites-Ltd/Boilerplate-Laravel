@@ -9,7 +9,7 @@ class ItemService implements ItemInterface
 
   private $test;
   
-  public function __construct($test='blah') {
+  public function __construct($test='item') {
     $this->test = $test;
   }
   
